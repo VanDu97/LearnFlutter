@@ -6,6 +6,7 @@ import 'package:carousel_slider/carousel_controller.dart';
 import 'package:carousel_slider/carousel_options.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'carouseDemo.dart';
 
 final List<String> imgList = [
   'https://images.unsplash.com/photo-1520342868574-5fa3804e551c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6ff92caffcdd63681a35134a6770ed3b&auto=format&fit=crop&w=1951&q=80',
@@ -23,7 +24,7 @@ class CarouselDemo extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(initialRoute: '/', routes: {
       '/': (ctx) => CarouselDemoHome(),
-      '/basic': (ctx) => BasicDemo(),
+      '/basic': (ctx) => CarouselWithIndicatorDemo(),
       '/nocenter': (ctx) => NoCenterDemo(),
       '/image': (ctx) => ImageSliderDemo(),
       '/complicated': (ctx) => ComplicatedImageDemo(),
@@ -389,12 +390,12 @@ class OnDemandCarouselDemo extends StatelessWidget {
   }
 }
 
-class CarouselWithIndicatorDemo extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() {
-    return _CarouselWithIndicatorState();
-  }
-}
+// class CarouselWithIndicatorDemo extends StatefulWidget {
+//   @override
+//   State<StatefulWidget> createState() {
+//     return _CarouselWithIndicatorState();
+//   }
+// }
 
 class _CarouselWithIndicatorState extends State<CarouselWithIndicatorDemo> {
   int _current = 0;
