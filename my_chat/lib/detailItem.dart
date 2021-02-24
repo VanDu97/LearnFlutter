@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'itemhumberger.dart';
+import 'burgers.dart';
 
 class SABT extends StatefulWidget {
   final Widget child;
@@ -66,6 +68,58 @@ class DetailItem extends StatefulWidget {
 }
 
 class _DetailItem extends State<DetailItem> {
+  List<ItemHumberger> items = [
+    ItemHumberger(name: 'American Beef Burgers', price: '\$16', id: '1'),
+    ItemHumberger(
+        name: 'Classic Cheese Burger Beef Burgers', price: '\$15', id: '2'),
+    ItemHumberger(name: 'Fishman Beef Burgers', price: '\$10', id: '3'),
+    ItemHumberger(
+        name: 'American Beef Burgers and Burgers', price: '\$26', id: '4')
+  ];
+  List<Burgers> ListBurgers = [
+    Burgers(
+      name: 'Classic Cheese Burger Beef Burgers',
+      price: '\$16',
+      description: 'Angus, beef, cheese',
+      bestSale: true,
+    ),
+    Burgers(
+      name: 'Pork Burgers',
+      price: '\$18',
+      description: 'Angus, beef, cheese',
+      bestSale: false,
+    ),
+    Burgers(
+      name: 'Triple Double Burgers',
+      price: '\$10.5',
+      description: 'Angus, beef, cheese',
+      bestSale: true,
+    ),
+    Burgers(
+      name: 'Classic Cheese Burger Beef Burgers',
+      price: '\$11.1',
+      description: 'Angus, beef, cheese',
+      bestSale: false,
+    ),
+    Burgers(
+      name: 'Classic Cheese Burger Beef Burgers',
+      price: '\$20',
+      description: 'Angus, beef, cheese',
+      bestSale: true,
+    ),
+    Burgers(
+      name: 'Classic Cheese Burger Beef Burgers',
+      price: '\$11.1',
+      description: 'Angus, beef, cheese',
+      bestSale: false,
+    ),
+    Burgers(
+      name: 'Classic Cheese Burger Beef Burgers',
+      price: '\$20',
+      description: 'Angus, beef, cheese',
+      bestSale: true,
+    )
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -90,16 +144,199 @@ class _DetailItem extends State<DetailItem> {
                   height: MediaQuery.of(context).size.height * 0.25),
             ),
           ),
-          SliverFixedExtentList(
-            itemExtent: 100.0,
-            delegate: SliverChildBuilderDelegate(
-              (BuildContext context, int index) {
-                return Container(
-                  alignment: Alignment.center,
-                  color: Colors.lightBlue[100 * (index % 9)],
-                  child: Text('List Item $index'),
-                );
-              },
+          SliverToBoxAdapter(
+            child: Container(
+              decoration: BoxDecoration(
+                  // border: Border.all(width: 1, color: Colors.black),
+                  borderRadius: BorderRadius.circular(6)),
+              child: Padding(
+                padding: EdgeInsets.all(6),
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.all(2),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text("Really Cool Burgers",
+                              style: TextStyle(
+                                  color: Color.fromRGBO(241, 91, 92, 1),
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold)),
+                          Icon(Icons.favorite_border,
+                              color: Color.fromRGBO(241, 91, 92, 1))
+                        ],
+                      ),
+                    ),
+                    Padding(
+                        padding: EdgeInsets.all(2),
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.star,
+                              color: Color.fromRGBO(241, 91, 92, 1),
+                            ),
+                            Text('4.9',
+                                style: TextStyle(
+                                    color: Color.fromRGBO(241, 91, 92, 1))),
+                            Text("(124 ratings) Burgers - Westerm Food!")
+                          ],
+                        )),
+                    Padding(
+                        padding: EdgeInsets.all(2),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Icon(Icons.place,
+                                color: Color.fromRGBO(241, 91, 92, 1)),
+                            Expanded(
+                              child: Text(
+                                  "6th Floor, Ocean Park Building, 1 Đào Duy Anh, Phương Mai, Phương Mai, Đống Đa, Hà Nội"),
+                            )
+                          ],
+                        )),
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                      child: Row(
+                        children: [
+                          Text('Popular Choices',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 20))
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(3),
+                      child: Container(
+                        margin: EdgeInsets.symmetric(vertical: 20.0),
+                        height: MediaQuery.of(context).size.height * 0.25,
+                        child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: items.length,
+                            shrinkWrap: true,
+                            itemBuilder: (context, int index) {
+                              return GestureDetector(
+                                  onTap: () {},
+                                  child: Container(
+                                    margin: EdgeInsets.fromLTRB(0, 0, 40, 0),
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.3,
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(6),
+                                            child: Image.network(
+                                                'https://source.unsplash.com/random',
+                                                fit: BoxFit.fitWidth,
+                                                height: MediaQuery.of(context)
+                                                        .size
+                                                        .height *
+                                                    0.15,
+                                                width: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    0.3)),
+                                        Padding(
+                                          padding:
+                                              EdgeInsets.fromLTRB(0, 10, 10, 0),
+                                          child: Text(items[index].name,
+                                              style: TextStyle(
+                                                  color: Colors.black,
+                                                  fontWeight: FontWeight.w400,
+                                                  fontSize: 15)),
+                                        ),
+                                        Padding(
+                                          padding:
+                                              EdgeInsets.fromLTRB(0, 5, 10, 0),
+                                          child: Text(items[index].price,
+                                              style: TextStyle(
+                                                  color: Colors.black,
+                                                  fontWeight: FontWeight.bold)),
+                                        ),
+                                      ],
+                                    ),
+                                  ));
+                            }),
+                      ),
+                    ),
+                    Padding(
+                        padding: EdgeInsets.all(2),
+                        child: Row(
+                          children: [
+                            Text('Burgers',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 20))
+                          ],
+                        )),
+                    Padding(
+                      padding: EdgeInsets.all(2),
+                      child: Column(
+                          children: new List<Widget>.generate(
+                              ListBurgers.length, (index) {
+                        return Container(
+                          margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
+                          padding: EdgeInsets.fromLTRB(10, 20, 10, 20),
+                          width: MediaQuery.of(context).size.width,
+
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(6),
+                              color: Colors.white),
+                          //height: MediaQuery.of(context).size.height * 0.2,
+                          child: Column(
+                            children: [
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(ListBurgers[index].name,
+                                      style: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w600)),
+                                  Text(ListBurgers[index].price,
+                                      style: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold)),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(ListBurgers[index].description,
+                                      style:
+                                          TextStyle(color: Colors.blueAccent)),
+                                  ListBurgers[index].bestSale
+                                      ? Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            Icon(Icons.star,
+                                                color: Color.fromRGBO(
+                                                    241, 91, 92, 1)),
+                                            Text(
+                                              'Popular',
+                                              style: TextStyle(
+                                                  color: Color.fromRGBO(
+                                                      241, 91, 92, 1)),
+                                            )
+                                          ],
+                                        )
+                                      : Text(''),
+                                ],
+                              )
+                            ],
+                          ),
+                        );
+                      })),
+                    ),
+                  ],
+                ),
+              ),
             ),
           ),
         ],
